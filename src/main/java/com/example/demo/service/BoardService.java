@@ -35,7 +35,7 @@ public class BoardService {
         
     	Optional<Board> optionalBoard = boardRepository.findById(id);
         
-        Board board = optionalBoard.orElseThrow(() -> new IllegalArgumentException("게시판이 없습니다."));
+        Board board = optionalBoard.orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
  
         
         return new BoardResponseDto(board.getId(), board.getTitle(), board.getContent());
@@ -44,7 +44,7 @@ public class BoardService {
     public ApiResponseDto deleteBoard(Long id) {
         try {
         	
-        	boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("게시판이 없습니다."));
+        	boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
         	
         }catch(IllegalArgumentException e) {
         	
@@ -54,5 +54,13 @@ public class BoardService {
  
         boardRepository.deleteById(id);
         return new ApiResponseDto("게시글 삭제 완료");
+    }
+    
+    public BoardResponseDto updateBoard(Long id, BoardForm boardForm) {
+        
+    	Optional<Board> optionalBoard = boardRepository.findById(id);
+    	Board board = optionalBoard.orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
+    	board.update(boardForm.getTitle(),boardForm.getContent());
+        return new BoardResponseDto(board.getId(), board.getTitle(), board.getContent());
     }
 }
