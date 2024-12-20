@@ -50,5 +50,11 @@ public class BoardController {
  		BoardResponseDto responseDto = boardService.updateBoard(id, boardForm);
  		return ResponseEntity.ok().body(responseDto);
  	}
+ 	
+ 	@GetMapping("/boards")
+ 	public ResponseEntity<List<BoardResponseDto>> getAllBoard() {
+ 		List<BoardResponseDto> responseDtoList = boardService.getAllBoard();
+ 		return ResponseEntity.ok().body(responseDtoList);
+ 	}
 
 }

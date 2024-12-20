@@ -63,4 +63,18 @@ public class BoardService {
     	board.update(boardForm.getTitle(),boardForm.getContent());
         return new BoardResponseDto(board.getId(), board.getTitle(), board.getContent());
     }
+    
+    public List<BoardResponseDto> getAllBoard() {
+    	List<Board> boardList = boardRepository.findAll();
+    	
+    	List<BoardResponseDto> dtoList = new ArrayList<>();
+    	
+    	for(Board board : boardList) {
+    		
+    		dtoList.add(new BoardResponseDto(board.getId(), board.getTitle(), board.getContent()));
+    		
+    	}      
+        return dtoList;
+    	
+    }
 }
