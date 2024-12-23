@@ -4,13 +4,12 @@ public class CommentsDto {
     private Long boardId; // 댓글을 추가할 게시글 ID
     private String c_Content; // 댓글 내용
 
-    // 기본 생성자 추가
+    // 기본 생성자
     public CommentsDto() {
     }
 
     // 매개변수를 받는 생성자
-    public CommentsDto(Long boardId, String c_Content) {
-        this.boardId = boardId;
+    public CommentsDto(String c_Content) {
         this.c_Content = c_Content;
     }
 
@@ -31,3 +30,4 @@ public class CommentsDto {
         this.c_Content = c_Content;
     }
 }
+

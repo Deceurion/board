@@ -20,19 +20,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comments/{id}")
+@RequestMapping("/comments")
 public class CommentsController {
-	private final CommentsService commentsService;
-	
-	public CommentsController(CommentsService commentsService) {
-		this.commentsService = commentsService;
-	}
-	
-	@PostMapping
-	public ResponseEntity<ApiResponseDto> createComments(@RequestBody CommentsDto commentsDto) {
-		ApiResponseDto responseDto = commentsService.createComment(commentsDto);
-		return ResponseEntity.ok().body(responseDto);
-	}
-	
-	
+    private final CommentsService commentsService;
+
+    public CommentsController(CommentsService commentsService) {
+        this.commentsService = commentsService;
+    }
+
+    @PostMapping("/{boardId}")
+    public ResponseEntity<ApiResponseDto> createComments(@PathVariable("boardId") Long boardId, @RequestBody CommentsDto commentsDto) {
+        commentsDto.setBoardId(boardId);
+        ApiResponseDto responseDto = commentsService.createComment(commentsDto);
+        return ResponseEntity.ok().body(responseDto);
+    }
+
 }
