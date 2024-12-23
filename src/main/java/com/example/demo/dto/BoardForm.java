@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 /**
- * 회원 이름을 저장 하고 전달하는 DTO
+ * 게시글 이름을 저장 하고 전달하는 DTO
  */
 public class BoardForm {
 	private String title;

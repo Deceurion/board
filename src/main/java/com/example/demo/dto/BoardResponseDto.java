@@ -1,7 +1,7 @@
 package com.example.demo.dto;
 
 /**
- * 회원 정보를 저장하고 전달하기 위한 DTO
+ * 게시글 정보를 저장하고 전달하기 위한 DTO
  */
 public class BoardResponseDto {
 	private Long id;

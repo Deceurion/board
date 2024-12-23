@@ -37,7 +37,6 @@ public class BoardService {
         
         Board board = optionalBoard.orElseThrow(() -> new IllegalArgumentException("게시글이 없습니다."));
  
-        
         return new BoardResponseDto(board.getId(), board.getTitle(), board.getContent());
     }
     
@@ -50,8 +49,7 @@ public class BoardService {
         	
         	return new ApiResponseDto(e.getMessage());
         }
-        
- 
+         
         boardRepository.deleteById(id);
         return new ApiResponseDto("게시글 삭제 완료");
     }
@@ -65,6 +63,7 @@ public class BoardService {
     }
     
     public List<BoardResponseDto> getAllBoard() {
+    	
     	List<Board> boardList = boardRepository.findAll();
     	
     	List<BoardResponseDto> dtoList = new ArrayList<>();
